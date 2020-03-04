@@ -1,0 +1,30 @@
+{
+    "name": "@itryapitsin/babel-plugin-classpath-expr",
+    "version": "1.0.0",
+    "description": "Babel plugin for transforming the idx utility function.",
+    "main": "lib/index.js",
+    "files": [
+        "README.md",
+        "lib/"
+    ],
+    "license": "MIT",
+    "scripts": {
+        "build": "babel src --out-dir lib --ignore test.js --copy-files",
+        "prepublish": "yarn run build",
+        "test": "jest",
+        "format": "prettier --write './src/**/*.{css,gql,graphql,html,js,jsx,json,less,md,mdx,scss,ts,tsx,vue,yaml,yml}' '.editorconfig' 'LICENSE'"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.6.0",
+        "@babel/core": "^7.6.0",
+        "@babel/plugin-transform-async-to-generator": "^7.5.0",
+        "@babel/plugin-transform-flow-strip-types": "^7.4.4",
+        "@babel/preset-env": "^7.6.0",
+        "babel-jest": "^24.9.0",
+        "jest": "^24.9.0"
+    },
+    "jest": {
+        "testEnvironment": "node",
+        "rootDir": "src"
+    }
+}
