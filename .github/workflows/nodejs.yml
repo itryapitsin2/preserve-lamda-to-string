@@ -1,6 +1,6 @@
 name: Node.js CI
 
-on: release
+on: [push]
 
 jobs:
   build:
