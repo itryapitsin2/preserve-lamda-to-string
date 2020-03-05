@@ -8,7 +8,7 @@ Preserve to string can help to use type-saving for mapping navigation to class f
 function gte<T>(
     a: (T) => any,
     b: any
-) {
+): string {
     try {
         return `${a(undefined)}__gte=${b}`;
     } catch (e) {
