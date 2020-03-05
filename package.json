@@ -9,7 +9,7 @@
     ],"license": "MIT",
     "scripts": {
         "build": "babel src --out-dir lib --ignore test.js --copy-files",
-        "prepublish": "yarn run build && cp ./README.md .",
+        "prepublish": "yarn run build",
         "test": "jest",
         "format": "prettier --write './src/**/*.{css,gql,graphql,html,js,jsx,json,less,md,mdx,scss,ts,tsx,vue,yaml,yml}' '.editorconfig' 'LICENSE'"
     },
