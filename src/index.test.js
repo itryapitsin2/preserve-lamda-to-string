@@ -20,7 +20,7 @@ const fdr = fs.readFileSync(file, "utf8", function(err, data) {
 });
 
 describe("babel-plugin-preserve-arrow-function-to-string", () => {
-    it("should redeclare arrow toString", () => {
+    it("should redeclare arrow to string", () => {
         const { code } = transform(fdr, conf);
         console.log(code);
         expect(code).not.toEqual(fdr);
