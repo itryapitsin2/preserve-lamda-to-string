@@ -1,24 +1,30 @@
 import { transform } from "@babel/core";
 
 const conf = {
-    presets: [["@babel/preset-env"]],
-    plugins: ["./src/index.js"]
+    presets: [
+        "@babel/preset-env",
+        "@babel/preset-typescript"
+    ],
+    plugins: [
+        "./src/index.js",
+        "@babel/plugin-proposal-class-properties",
+    ], filename: './source.ts'
 };
+
+const fs = require("fs");
+const path = require("path");
+
+const file = path.join(__dirname, "./", "source.ts");
+const fdr = fs.readFileSync(file, "utf8", function(err, data) {
+  return data;
+});
+
 describe("babel-plugin-preserve-arrow-function-to-string", () => {
     it("should redeclare arrow toString", () => {
-        const input =
-            "\n" +
-            'let t = { a: { b: { c: "Test" } } };' +
-            "function testFunc(a, b) { b(a) };" +
-            "testFunc(t, test => test.a.b.c);";
-        const { code } = transform(input, conf);
-        expect(code).not.toEqual(input);
-        // var result = eval(code);
-        // expect(result.toString()).toEqual(input);
-    });
-    it("should not redeclare function toString", () => {
-        const input = 'function test() { console.log("test") }';
-        const { code } = transform(input, conf);
-        expect(eval(code).toString).toEqual("".toString);
+        const { code } = transform(fdr, conf);
+        console.log(code);
+        expect(code).not.toEqual(fdr);
+        expect(code).toContain("premises_length");
+        eval(code);
     });
 });
